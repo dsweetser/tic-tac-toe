@@ -2,19 +2,21 @@
 
 const setAPIOrigin = require('../../lib/set-api-origin');
 const config = require('./config');
-const gameLogic = require('game-logic');
+const gameLogic = require('./game-logic');
 
 const createBoard = function () {
   gameLogic.board = ['', '', '', '', '', '', '', '', ''];
   gameLogic.turnCounter = 0;
   for (let i = 0; i < 9; i++) {
-    $('#board').append('<div class="square"></div>');
+    $('#board').append('<div class="col-xs-4" id="square'+i+'"></div>');
   }
 };
 
+createBoard();
+
 $(() => {
   setAPIOrigin(location, config);
-  createBoard();
+  // createBoard();
 
   //on click, turns div to X or O and checks triggerEndGame
   //  $().on('click')

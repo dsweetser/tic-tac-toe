@@ -56,6 +56,9 @@ testLogic();
 
 module.exports = {
   triggerEndGame,
+  turnCounter,
+  turnOrder,
+  board,
 };
 
 // sample testing arrays ['x','o','x','o','o','x','x','x','o'], ['x','','','','x','','','','x']
