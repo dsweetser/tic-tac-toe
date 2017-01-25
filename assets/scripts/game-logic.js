@@ -40,7 +40,7 @@ const turnOrder = function (num) {
   turnCounter++;
 };
 
-// this function tests the above logic, not implemented right
+// this function tests the above logic, will need to be reimplemented elsewhere
 const testLogic = function (square) {
   turnOrder(square);
   console.log(board);
