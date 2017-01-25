@@ -8,11 +8,11 @@ const createBoard = function () {
   // gameLogic.turnCounter = 0;
 
   for (let i = 0; i < 9; i++) {
-    $('#board').append('<div class="col-xs-4" id="square'+i+'"></div>');
+    $('#board').append('<div class="col-xs-4" id="square' + i + '"></div>');
     if (gameLogic.board[i] === 'x') {
-      $('#square'+i).text('X');
+      $('#square' + i).text('X');
     } else if (gameLogic.board[i] === 'o') {
-      $('#square'+i).text('O');
+      $('#square' + i).text('O');
     }
   }
 };
@@ -21,6 +21,7 @@ createBoard();
 
 $(() => {
   setAPIOrigin(location, config);
+
   // createBoard();
 
   //on click, turns div to X or O and checks triggerEndGame
