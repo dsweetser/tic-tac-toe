@@ -5,10 +5,15 @@ const config = require('./config');
 const gameLogic = require('./game-logic');
 
 const createBoard = function () {
-  gameLogic.board = ['', '', '', '', '', '', '', '', ''];
-  gameLogic.turnCounter = 0;
+  // gameLogic.turnCounter = 0;
+
   for (let i = 0; i < 9; i++) {
     $('#board').append('<div class="col-xs-4" id="square'+i+'"></div>');
+    if (gameLogic.board[i] === 'x') {
+      $('#square'+i).text('X');
+    } else if (gameLogic.board[i] === 'o') {
+      $('#square'+i).text('O');
+    }
   }
 };
 
