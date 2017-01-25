@@ -21,7 +21,9 @@ const testLogic = function (event) {
   event.preventDefault();
   gameLogic.turnOrder(parseInt(event.target.id));
   console.log(gameLogic.board);
-  return gameLogic.triggerEndGame(gameLogic.board);
+  gameLogic.triggerEndGame(gameLogic.board);
+  createBoard();
+  addHandlers();
 };
 
 const addHandlers = () => {
