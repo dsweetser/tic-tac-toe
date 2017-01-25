@@ -31,6 +31,11 @@ const triggerEndGame = function (board) {
 //determines if click is X or O, sets the board position num to that value and
 //increments turnCounter
 const turnOrder = function (num) {
+  if (board[num] !== '') {
+    console.log('Invalid Move!');
+    return 'Invalid Move';
+  }
+
   if (turnCounter % 2 === 0) {
     board[num] = 'x';
   } else {
