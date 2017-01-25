@@ -1,2 +1,9 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+$border: #000;
+
+.square {
+  border: 1px $border;
+  height: 100px;
+  width: 100px;
+};
