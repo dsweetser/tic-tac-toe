@@ -8,8 +8,15 @@ const run = function (event) {
   gameLogic.testLogic(square);
 };
 
+const clear = function() {
+  gameLogic.turnCounter = 0;
+  gameLogic.board = ['', '', '', '', '', '', '', '', ''];
+  gameLogic.createBoard();
+};
+
 const addGameHandlers = () => {
   $('#board').on('click', run);
+  $('#reset').on('click', clear);
 };
 
 module.exports = { addGameHandlers,

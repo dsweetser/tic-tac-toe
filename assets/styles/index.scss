@@ -2,6 +2,10 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 $border: #000;
 
+.board {
+  margin-top: 50px;
+}
+
 .col-xs-4 {
   border: 1px solid $border;
   font-size: 50px;
@@ -15,4 +19,9 @@ $border: #000;
   font-size: 75px;
   height: 100px;
   text-align: center;
+}
+
+.col-xs-3 {
+  float: right;
+  margin-top: 50px;
 }
