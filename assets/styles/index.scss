@@ -4,5 +4,15 @@ $border: #000;
 
 .col-xs-4 {
   border: 1px solid $border;
+  font-size: 50px;
   height: 100px;
+  padding: 2% 0;
+  text-align: center;
+}
+
+.col-xs-12 {
+  border: 1px solid $border;
+  font-size: 75px;
+  height: 100px;
+  text-align: center;
 }
