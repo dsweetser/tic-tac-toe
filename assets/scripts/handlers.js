@@ -8,7 +8,7 @@ const run = function (event) {
   gameLogic.testLogic(square);
 };
 
-const clear = function() {
+const clear = function () {
   gameLogic.turnCounter = 0;
   gameLogic.board = ['', '', '', '', '', '', '', '', ''];
   gameLogic.createBoard();
