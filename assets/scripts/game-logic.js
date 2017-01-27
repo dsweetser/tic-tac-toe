@@ -1,5 +1,17 @@
 'use strict';
 
+const api = require('./auth/api');
+//const store = require('./store');
+
+let game = {
+  game: {
+  cell:{
+    index:'',
+    value:'',},
+    over: false
+  }
+};
+
 let turnCounter = 0;
 let board = ['', '', '', '', '', '', '', '', ''];
 
@@ -60,19 +72,35 @@ const createBoard = function () {
   }
 };
 
+//x or o to server
+const activePlayer = function () {
+  if (turnCounter % 2 === 0) {
+  return 'x';
+} else {
+  return 'o';
+}
+};
+
 const testLogic = function (square) {
+  game.game.cell.index = square;
+  game.game.cell.value = activePlayer();
   turnOrder(square);
   console.log(board);
+  console.log(game);
   if (triggerEndGame(board) === 'X') {
     $('#board').html('<div class="container board" id="board"></div>');
     $('#board').append('<div class="col-xs-12"><p>X WINS</p></div>');
+    game.game.over = true;
   } else if (triggerEndGame(board) === 'O') {
     $('#board').html('<div class="container board" id="board"></div>');
     $('#board').append('<div class="col-xs-12"><p>O WINS</p></div>');
+    game.game.over = true;
   } else if (triggerEndGame(board) === 'Nobody') {
     $('#board').html('<div class="container board" id="board"></div>');
     $('#board').append('<div class="col-xs-12"><p>nobody wins...</p></div>');
+    game.game.over = true;
   } else {
+    api.updateBoard(game); //id will need to change
     createBoard();
   }
 };

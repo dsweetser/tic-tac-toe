@@ -32,7 +32,7 @@ const onChangePassword = function (event) {
   event.preventDefault();
 
   let data = getFormFields(event.target);
-
+  console.log(data);
   api.changePassword(data)
     .then(ui.success)
     .catch(ui.failure);
@@ -50,11 +50,24 @@ const onSignOut = function (event) {
     .catch(ui.failure);
 };
 
+//NEW STUFF BELOW
+
+const gamesPlayed = function (event) {
+  event.preventDefault();
+  api.get()
+    // .then((response) => {
+    //   store.user = response.game;
+    // })
+    .then(ui.success)
+    .catch(ui.failure);
+  };
+
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp);
   $('#sign-in').on('submit', onSignIn);
   $('#change-password').on('submit', onChangePassword);
   $('#sign-out').on('submit', onSignOut);
+  $('#getGames').on('submit', gamesPlayed);
 };
 
 module.exports = {

@@ -40,9 +40,33 @@ const signOut = function () {
   });
 };
 
+// NEW THINGS
+const get = function () {
+  return $.ajax({
+    url: `${config.apiOrigin}/games/`,
+    method: 'GET',
+    headers: {
+      Authorization: `Token token=${store.user.token}`,
+    },
+  });
+};
+
+const updateBoard = function (data) {
+  return $.ajax({
+    url: `${config.apiOrigin}/games/21219`,
+    method: 'PATCH',
+    headers: {
+      Authorization: `Token token=${store.user.token}`,
+    },
+    data,
+  });
+};
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
   signOut,
+  get,
+  updateBoard,
 };
