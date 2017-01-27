@@ -63,8 +63,16 @@ const getActiveGames = function (event) {
           g.push(store.games[i].id);
         }
 
-        $('#getGames').parent().parent().append('<div class="col-xs-11">Your Active Games are: ' +
+        if ($('#temp')) {
+          $('#temp').remove();
+        }
+
+        if (g[0] === undefined) {
+          $('#getGames').parent().parent().append('<div class="col-xs-11" id="temp">You Have No Open Games!</div>');
+        } else {
+          $('#getGames').parent().parent().append('<div class="col-xs-11" id="temp">Your Active Games are: ' +
         g + '.</div>');
+      }
       }//console.log(store);
     })
     .then(ui.success)
