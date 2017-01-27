@@ -105,19 +105,25 @@ const changeGame = function () {
   api.getGame(store.gameId)
     .then((response) =>
   store.games = response.games);
-  console.log(store.games);
-  for (let i = 0, max = store.games.length; i < max; i++) {
-    console.log(store.games[i].cells);
-    // finds the matching game ID
-
-    if (store.games[i].id === store.gameId) {
-      gameLogic.board = store.games[i].cells;
-      for (let i = 0; i < 9; i++) {
-
-      }
-      console.log(gameLogic.board);
-    }
-  }
+  // for (let i = 0, max = store.games.length; i < max; i++) {
+  //
+  //   // finds the matching game ID
+  //
+  //   if (store.games[i].id.toString() === store.gameId.toString()) {
+  //     gameLogic.board = store.games[i].cells;
+  //     let num = 0;
+  //     for (let j = 0; j < 9; j++) {
+  //       if (gameLogic.board[j] !== '') {
+  //         num++;
+  //       }
+  //       //this should set the board state to the loaded game's
+  //       console.log(gameLogic.board);
+  //       gameLogic.turnCounter = num;
+  //       console.log(gameLogic.turnCounter);
+  //       gameLogic.createBoard();
+  //     }
+  //   }
+  // }
 };
 
 const run = function (event) {

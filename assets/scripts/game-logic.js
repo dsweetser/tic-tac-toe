@@ -72,6 +72,7 @@ const createBoard = function () {
       $('#' + i).text('O');
     }
   }
+  console.log('repainted');
 };
 
 //x or o to server
