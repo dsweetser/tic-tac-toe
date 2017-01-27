@@ -51,6 +51,16 @@ const get = function () {
   });
 };
 
+const getGame = function (id) {
+  return $.ajax({
+    url: `${config.apiOrigin}/games/${id}`,
+    method: 'GET',
+    headers: {
+      Authorization: `Token token=${store.user.token}`,
+    },
+  });
+};
+
 const nova = function () {
   return $.ajax({
     url: `${config.apiOrigin}/games/`,
@@ -80,4 +90,5 @@ module.exports = {
   get,
   updateBoard,
   nova,
+  getGame,
 };

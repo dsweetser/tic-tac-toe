@@ -59,6 +59,7 @@ const getActiveGames = function (event) {
     .then((response) => {
         store.games = response.games;
         let g = [];
+        let total = store.games.length;
         for (let i = 0, max = store.games.length; i < max; i++) {
           if (store.games[i].over === false) {
             g.push(store.games[i].id);
@@ -70,10 +71,12 @@ const getActiveGames = function (event) {
 
           if (g[0] === undefined) {
             $('#getGames').parent().parent().append(
-              '<div class="col-xs-11" id="temp">You Have No Open Games!</div>');
+              '<div class="col-xs-11" id="temp">You Have No Open Games out of ' +
+                total + ' games played!</div>');
           } else {
             $('#getGames').parent().parent().append(
-              '<div class="col-xs-11" id="temp">Your Active Games are: ' + g + '.</div>');
+              '<div class="col-xs-11" id="temp">Your Active Games are: ' + g +
+                ' out of '+ (total-g.length) + ' games played.</div>');
           }
         }//console.log(store);
       })
@@ -83,12 +86,12 @@ const getActiveGames = function (event) {
 
 const newGame = function () {
   event.preventDefault();
-  let game = 0;
   api.nova()
     .then((response) => {
-      game = response.games;
+      store.gameId = response.game.id;
     });
-  console.log(game);
+    console.log(store.game);
+  //store.gameId = game.gameId;
   gameLogic.turnCounter = 0;
   gameLogic.board = ['', '', '', '', '', '', '', '', ''];
   gameLogic.createBoard();
@@ -98,7 +101,23 @@ const changeGame = function () {
   event.preventDefault();
   let data = getFormFields(event.target);
   store.gameId = data.GameId;
-  console.log(store.gameId);
+
+  api.getGame(store.gameId)
+    .then((response) =>
+  store.games = response.games);
+  console.log(store.games);
+  for (let i = 0, max = store.games.length; i < max; i++) {
+    console.log(store.games[i].cells);
+    // finds the matching game ID
+
+    if (store.games[i].id === store.gameId) {
+      gameLogic.board = store.games[i].cells;
+      for (let i = 0; i < 9; i++) {
+
+      }
+      console.log(gameLogic.board);
+    }
+  }
 };
 
 const run = function (event) {
