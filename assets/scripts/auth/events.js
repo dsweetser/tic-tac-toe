@@ -4,6 +4,7 @@ const getFormFields = require(`../../../lib/get-form-fields`);
 
 const api = require('./api');
 const ui = require('./ui');
+const gameLogic = require('../game-logic');
 
 const store = require('../store');
 
@@ -68,7 +69,8 @@ const getActiveGames = function (event) {
         }
 
         if (g[0] === undefined) {
-          $('#getGames').parent().parent().append('<div class="col-xs-11" id="temp">You Have No Open Games!</div>');
+          $('#getGames').parent().parent().append(
+            '<div class="col-xs-11" id="temp">You Have No Open Games!</div>');
         } else {
           $('#getGames').parent().parent().append('<div class="col-xs-11" id="temp">Your Active Games are: ' +
         g + '.</div>');
@@ -79,12 +81,33 @@ const getActiveGames = function (event) {
     .catch(ui.failure);
   };
 
+  const newGame = function () {
+    gameLogic.turnCounter = 0;
+    gameLogic.board = ['', '', '', '', '', '', '', '', ''];
+    gameLogic.createBoard();
+  };
+
+  const changeGame = function () {
+    event.preventDefault();
+    let data = getFormFields(event.target);
+    api.gameId = data.GameId;
+  } ;
+
+  const run = function (event) {
+    event.preventDefault();
+    let square = parseInt(event.target.id);
+    gameLogic.testLogic(square);
+  };
+
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp);
   $('#sign-in').on('submit', onSignIn);
   $('#change-password').on('submit', onChangePassword);
   $('#sign-out').on('submit', onSignOut);
   $('#getGames').on('submit', getActiveGames);
+  $('#SwitchGame').on('submit', changeGame);
+  $('#reset').on('click', newGame);
+  $('#board').on('click', run);
 };
 
 module.exports = {

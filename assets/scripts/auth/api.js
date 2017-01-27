@@ -2,8 +2,9 @@
 
 const config = require('../config');
 const store = require('../store');
+//const gameLogic = require('../game-logic');
 
-let gameId = 21219;
+let gameId = 0;
 
 const signUp = function (data) {
   return $.ajax({
