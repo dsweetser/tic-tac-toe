@@ -3,7 +3,7 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 $border: #000;
 
 .board {
-  margin-top: 50px;
+  margin: 20px 0;
 }
 
 .col-xs-4 {
@@ -21,7 +21,7 @@ $border: #000;
   text-align: center;
 }
 
-.col-xs-3 {
-  float: right;
-  margin-top: 50px;
+.col-xs-1 {
+  float: left;
+  margin: 5px;
 }

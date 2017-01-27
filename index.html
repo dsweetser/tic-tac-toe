@@ -12,7 +12,16 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
-      <form id="sign-up">
+
+
+      <div class="container board" id="board"></div>
+      <div class="row"><div class="col-xs-1">
+        <form id="reset">
+          <input type="submit" name="submit" value="New Game"></form></div></div>
+        <div class="row"><div class="col-xs-1">
+          <form id="getGames">
+              <input type="submit" name="submit" value="Get Games"></form></div></div>
+      <div class="container"><form id="sign-up">
               <fieldset>
                 <legend>Sign up!</legend>
                 <label>
@@ -33,7 +42,7 @@
 
             <form id="sign-in">
               <fieldset>
-                <legend>Sign in!</legend>
+                <legend>Sign in</legend>
                 <label>
                   Email
                   <input type="text" name="credentials[email]">
@@ -48,7 +57,7 @@
 
             <form id="change-password">
               <fieldset>
-                <legend>Change Password!</legend>
+                <legend>Change Password</legend>
                 <label>
                   Current Password
                   <input type="password" name="passwords[old]">
@@ -64,18 +73,9 @@
 
             <form id="sign-out">
               <fieldset>
-                <legend>Sign Out!</legend>
+                <legend>Sign Out</legend>
                 <input type="submit" name="submit" value="Sign Out!">
               </fieldset>
-            </form>
-
-      <div class="container board" id="board"></div>
-      <div class="row"><div class="col-xs-3">
-        <form id="reset">
-        <input type="submit" name="submit" value="Reset Game"></form></div></div>
-        <div class="row"><div class="col-xs-3">
-          <form id="getGames">
-          <input type="submit" name="submit" value="Get Games"></form></div>
-      </div>
+            </form></div>
     </body>
 </html>

@@ -18,10 +18,10 @@ const onSignUp = function (event) {
 const onSignIn = function (event) {
   event.preventDefault();
   let data = getFormFields(event.target);
-
   api.signIn(data)
     .then((response) => {
       store.user = response.user;
+      console.log(store);
       return store.user;
     })
     .then(ui.success)
@@ -52,12 +52,21 @@ const onSignOut = function (event) {
 
 //NEW STUFF BELOW
 
-const gamesPlayed = function (event) {
-  event.preventDefault();
-  api.get()
-    // .then((response) => {
-    //   store.user = response.game;
-    // })
+const getActiveGames = function (event) {
+    event.preventDefault();
+    api.get()
+    .then((response) => {
+      store.games = response.games;
+      let g = [];
+      for (let i = 0, max = store.games.length; i < max; i++) {
+        if (store.games[i].over === false) {
+          g.push(store.games[i].id);
+        }
+
+        $('#getGames').parent().parent().append('<div class="col-xs-11">Your Active Games are: ' +
+        g + '.</div>');
+      }//console.log(store);
+    })
     .then(ui.success)
     .catch(ui.failure);
   };
@@ -67,7 +76,7 @@ const addHandlers = () => {
   $('#sign-in').on('submit', onSignIn);
   $('#change-password').on('submit', onChangePassword);
   $('#sign-out').on('submit', onSignOut);
-  $('#getGames').on('submit', gamesPlayed);
+  $('#getGames').on('submit', getActiveGames);
 };
 
 module.exports = {
