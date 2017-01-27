@@ -57,47 +57,55 @@ const getActiveGames = function (event) {
     event.preventDefault();
     api.get()
     .then((response) => {
-      store.games = response.games;
-      let g = [];
-      for (let i = 0, max = store.games.length; i < max; i++) {
-        if (store.games[i].over === false) {
-          g.push(store.games[i].id);
-        }
+        store.games = response.games;
+        let g = [];
+        for (let i = 0, max = store.games.length; i < max; i++) {
+          if (store.games[i].over === false) {
+            g.push(store.games[i].id);
+          }
 
-        if ($('#temp')) {
-          $('#temp').remove();
-        }
+          if ($('#temp')) {
+            $('#temp').remove();
+          }
 
-        if (g[0] === undefined) {
-          $('#getGames').parent().parent().append(
-            '<div class="col-xs-11" id="temp">You Have No Open Games!</div>');
-        } else {
-          $('#getGames').parent().parent().append('<div class="col-xs-11" id="temp">Your Active Games are: ' +
-        g + '.</div>');
-      }
-      }//console.log(store);
-    })
-    .then(ui.success)
-    .catch(ui.failure);
+          if (g[0] === undefined) {
+            $('#getGames').parent().parent().append(
+              '<div class="col-xs-11" id="temp">You Have No Open Games!</div>');
+          } else {
+            $('#getGames').parent().parent().append(
+              '<div class="col-xs-11" id="temp">Your Active Games are: ' + g + '.</div>');
+          }
+        }//console.log(store);
+      })
+  .then(ui.success)
+  .catch(ui.failure);
   };
 
-  const newGame = function () {
-    gameLogic.turnCounter = 0;
-    gameLogic.board = ['', '', '', '', '', '', '', '', ''];
-    gameLogic.createBoard();
-  };
+const newGame = function () {
+  event.preventDefault();
+  let game = 0;
+  api.nova()
+    .then((response) => {
+      game = response.games;
+    });
+  console.log(game);
+  gameLogic.turnCounter = 0;
+  gameLogic.board = ['', '', '', '', '', '', '', '', ''];
+  gameLogic.createBoard();
+};
 
-  const changeGame = function () {
-    event.preventDefault();
-    let data = getFormFields(event.target);
-    api.gameId = data.GameId;
-  } ;
+const changeGame = function () {
+  event.preventDefault();
+  let data = getFormFields(event.target);
+  api.gameId = data.GameId;
+  console.log(api.gameId);
+};
 
-  const run = function (event) {
-    event.preventDefault();
-    let square = parseInt(event.target.id);
-    gameLogic.testLogic(square);
-  };
+const run = function (event) {
+  event.preventDefault();
+  let square = parseInt(event.target.id);
+  gameLogic.testLogic(square);
+};
 
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp);

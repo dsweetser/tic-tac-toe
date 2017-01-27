@@ -2,7 +2,6 @@
 
 const config = require('../config');
 const store = require('../store');
-//const gameLogic = require('../game-logic');
 
 let gameId = 0;
 
@@ -54,6 +53,16 @@ const get = function () {
   });
 };
 
+const nova = function () {
+  return $.ajax({
+    url: `${config.apiOrigin}/games/`,
+    method: 'POST',
+    headers: {
+      Authorization: `Token token=${store.user.token}`,
+    },
+  });
+};
+
 const updateBoard = function (data) {
   return $.ajax({
     url: `${config.apiOrigin}/games/${gameId}`,
@@ -72,4 +81,5 @@ module.exports = {
   signOut,
   get,
   updateBoard,
+  nova,
 };
