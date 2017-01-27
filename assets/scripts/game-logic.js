@@ -92,8 +92,8 @@ const testLogic = function (square) {
   game.game.cell.index = square;
   game.game.cell.value = activePlayer();
   turnOrder(square);
-  console.log(board);
-  console.log(game);
+  // console.log(board);
+  // console.log(game);
   if (triggerEndGame(board) === 'X') {
     $('#board').html('<div class="container board" id="board"></div>');
     $('#board').append('<div class="col-xs-12"><p>X WINS</p></div>');

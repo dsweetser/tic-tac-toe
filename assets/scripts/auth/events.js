@@ -97,8 +97,8 @@ const newGame = function () {
 const changeGame = function () {
   event.preventDefault();
   let data = getFormFields(event.target);
-  api.gameId = data.GameId;
-  console.log(api.gameId);
+  store.gameId = data.GameId;
+  console.log(store.gameId);
 };
 
 const run = function (event) {

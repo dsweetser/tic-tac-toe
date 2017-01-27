@@ -3,8 +3,6 @@
 const config = require('../config');
 const store = require('../store');
 
-let gameId = 0;
-
 const signUp = function (data) {
   return $.ajax({
     url: config.apiOrigin + '/sign-up',
@@ -65,7 +63,7 @@ const nova = function () {
 
 const updateBoard = function (data) {
   return $.ajax({
-    url: `${config.apiOrigin}/games/${gameId}`,
+    url: `${config.apiOrigin}/games/${store.gameId}`,
     method: 'PATCH',
     headers: {
       Authorization: `Token token=${store.user.token}`,
