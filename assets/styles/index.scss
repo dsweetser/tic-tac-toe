@@ -1,13 +1,27 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
-$border: #000;
+$black: #000;
+$white: #fff;
+
+body {
+  background-image: url('../plaid.jpg');
+  color: $white;
+}
+
+input {
+  color: $black;
+}
+
+legend {
+  color: $white;
+}
 
 .board {
   margin: 20px 0;
 }
 
 .col-xs-4 {
-  border: 1px solid $border;
+  border: 1px solid $white;
   font-size: 50px;
   height: 100px;
   padding: 2% 0;
@@ -15,7 +29,7 @@ $border: #000;
 }
 
 .col-xs-12 {
-  border: 1px solid $border;
+  border: 2px solid $white;
   font-size: 75px;
   height: 100px;
   text-align: center;
