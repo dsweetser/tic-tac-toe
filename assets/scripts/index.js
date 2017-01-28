@@ -2,14 +2,13 @@
 
 const setAPIOrigin = require('../../lib/set-api-origin');
 const config = require('./config');
-const gameLogic = require('./game-logic');
+
 
 $(() => {
   setAPIOrigin(location, config);
 
   //creates board
 
-  gameLogic.createBoard();
 });
 
 // use require with a reference to bundle the file and use it in this file

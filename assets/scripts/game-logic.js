@@ -1,6 +1,7 @@
 'use strict';
 
 const api = require('./auth/api');
+const gameVar = require('./gameVar');
 
 //const store = require('./store');
 
@@ -14,32 +15,32 @@ let game = {
   },
 };
 
-let turnCounter = 0;
-let board = ['', '', '', '', '', '', '', '', ''];
+// let turnCounter = 0;
+// let board = ['', '', '', '', '', '', '', '', ''];
 
-const triggerEndGame = function (board) {
-  if (((board[0] === 'x') && (board[1] === 'x') && (board[2] === 'x')) ||
-      ((board[3] === 'x') && (board[4] === 'x') && (board[5] === 'x')) ||
-      ((board[6] === 'x') && (board[7] === 'x') && (board[8] === 'x')) ||
-      ((board[0] === 'x') && (board[3] === 'x') && (board[6] === 'x')) ||
-      ((board[1] === 'x') && (board[4] === 'x') && (board[7] === 'x')) ||
-      ((board[2] === 'x') && (board[5] === 'x') && (board[8] === 'x')) ||
-      ((board[0] === 'x') && (board[4] === 'x') && (board[8] === 'x')) ||
-      ((board[2] === 'x') && (board[4] === 'x') && (board[6] === 'x'))) {
+const triggerEndGame = function () {
+  if (((gameVar.board[0] === 'x') && (gameVar.board[1] === 'x') && (gameVar.board[2] === 'x')) ||
+      ((gameVar.board[3] === 'x') && (gameVar.board[4] === 'x') && (gameVar.board[5] === 'x')) ||
+      ((gameVar.board[6] === 'x') && (gameVar.board[7] === 'x') && (gameVar.board[8] === 'x')) ||
+      ((gameVar.board[0] === 'x') && (gameVar.board[3] === 'x') && (gameVar.board[6] === 'x')) ||
+      ((gameVar.board[1] === 'x') && (gameVar.board[4] === 'x') && (gameVar.board[7] === 'x')) ||
+      ((gameVar.board[2] === 'x') && (gameVar.board[5] === 'x') && (gameVar.board[8] === 'x')) ||
+      ((gameVar.board[0] === 'x') && (gameVar.board[4] === 'x') && (gameVar.board[8] === 'x')) ||
+      ((gameVar.board[2] === 'x') && (gameVar.board[4] === 'x') && (gameVar.board[6] === 'x'))) {
     console.log('X Wins!');
     return ('X');
   } else if
-      (((board[0] === 'o') && (board[1] === 'o') && (board[2] === 'o')) ||
-      ((board[3] === 'o') && (board[4] === 'o') && (board[5] === 'o')) ||
-      ((board[6] === 'o') && (board[7] === 'o') && (board[8] === 'o')) ||
-      ((board[0] === 'o') && (board[3] === 'o') && (board[6] === 'o')) ||
-      ((board[1] === 'o') && (board[4] === 'o') && (board[7] === 'o')) ||
-      ((board[2] === 'o') && (board[5] === 'o') && (board[8] === 'o')) ||
-      ((board[0] === 'o') && (board[4] === 'o') && (board[8] === 'o')) ||
-      ((board[2] === 'o') && (board[4] === 'o') && (board[6] === 'o'))) {
+      (((gameVar.board[0] === 'o') && (gameVar.board[1] === 'o') && (gameVar.board[2] === 'o')) ||
+      ((gameVar.board[3] === 'o') && (gameVar.board[4] === 'o') && (gameVar.board[5] === 'o')) ||
+      ((gameVar.board[6] === 'o') && (gameVar.board[7] === 'o') && (gameVar.board[8] === 'o')) ||
+      ((gameVar.board[0] === 'o') && (gameVar.board[3] === 'o') && (gameVar.board[6] === 'o')) ||
+      ((gameVar.board[1] === 'o') && (gameVar.board[4] === 'o') && (gameVar.board[7] === 'o')) ||
+      ((gameVar.board[2] === 'o') && (gameVar.board[5] === 'o') && (gameVar.board[8] === 'o')) ||
+      ((gameVar.board[0] === 'o') && (gameVar.board[4] === 'o') && (gameVar.board[8] === 'o')) ||
+      ((gameVar.board[2] === 'o') && (gameVar.board[4] === 'o') && (gameVar.board[6] === 'o'))) {
     console.log('O Wins!');
     return ('O');
-  } else if (turnCounter > 8) {
+  } else if (gameVar.turnCounter > 8) {
     console.log('Nobody Wins');
     return ('Nobody');
   }
@@ -48,27 +49,27 @@ const triggerEndGame = function (board) {
 //determines if click is X or O, sets the board position num to that value and
 //increments turnCounter
 const turnOrder = function (num) {
-  if (board[num] !== '') {
+  if (gameVar.board[num] !== '') {
     console.log('Invalid Move!');
     return 'Invalid Move';
   }
 
-  if (turnCounter % 2 === 0) {
-    board[num] = 'x';
+  if (gameVar.turnCounter % 2 === 0) {
+    gameVar.board[num] = 'x';
   } else {
-    board[num] = 'o';
+    gameVar.board[num] = 'o';
   }
 
-  turnCounter++;
+  gameVar.turnCounter++;
 };
 
 const createBoard = function () {
   $('#board').html('<div class="container board" id="board"></div>');
   for (let i = 0; i < 9; i++) {
     $('#board').append('<div class="col-xs-4" id="' + i + '"></div>');
-    if (board[i] === 'x') {
+    if (gameVar.board[i] === 'x') {
       $('#' + i).text('X');
-    } else if (board[i] === 'o') {
+    } else if (gameVar.board[i] === 'o') {
       $('#' + i).text('O');
     }
   }
@@ -77,7 +78,7 @@ const createBoard = function () {
 
 //x or o to server
 const activePlayer = function () {
-  if (turnCounter % 2 === 0) {
+  if (gameVar.turnCounter % 2 === 0) {
     return 'x';
   } else {
     return 'o';
@@ -90,20 +91,26 @@ const gg = function () {
 };
 
 const testLogic = function (square) {
+  if (!gameVar.board) {
+    gameVar.board = ['', '', '', '', '', '', '', '', ''];
+  }
+  if (!gameVar.turnCounter) {
+    gameVar.turnCounter = 0;
+  }
   game.game.cell.index = square;
   game.game.cell.value = activePlayer();
   turnOrder(square);
   // console.log(board);
   // console.log(game);
-  if (triggerEndGame(board) === 'X') {
+  if (triggerEndGame(gameVar.board) === 'X') {
     $('#board').html('<div class="container board" id="board"></div>');
     $('#board').append('<div class="col-xs-12"><p>X WINS</p></div>');
     gg();
-  } else if (triggerEndGame(board) === 'O') {
+  } else if (triggerEndGame(gameVar.board) === 'O') {
     $('#board').html('<div class="container board" id="board"></div>');
     $('#board').append('<div class="col-xs-12"><p>O WINS</p></div>');
     gg();
-  } else if (triggerEndGame(board) === 'Nobody') {
+  } else if (triggerEndGame(gameVar.board) === 'Nobody') {
     $('#board').html('<div class="container board" id="board"></div>');
     $('#board').append('<div class="col-xs-12"><p>nobody wins...</p></div>');
     gg();
@@ -115,9 +122,9 @@ const testLogic = function (square) {
 
 module.exports = {
   triggerEndGame,
-  turnCounter,
+//  turnCounter,
   turnOrder,
-  board,
+//  board,
   testLogic,
   createBoard,
 };

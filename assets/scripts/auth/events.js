@@ -5,6 +5,7 @@ const getFormFields = require(`../../../lib/get-form-fields`);
 const api = require('./api');
 const ui = require('./ui');
 const gameLogic = require('../game-logic');
+const gameVar = require('../gameVar.js');
 
 const store = require('../store');
 
@@ -92,8 +93,8 @@ const newGame = function () {
     });
     console.log(store.game);
   //store.gameId = game.gameId;
-  gameLogic.turnCounter = 0;
-  gameLogic.board = ['', '', '', '', '', '', '', '', ''];
+  gameVar.turnCounter = 0;
+  gameVar.board = ['', '', '', '', '', '', '', '', ''];
   gameLogic.createBoard();
 };
 
@@ -105,25 +106,25 @@ const changeGame = function () {
   api.getGame(store.gameId)
     .then((response) =>
   store.games = response.games);
-  // for (let i = 0, max = store.games.length; i < max; i++) {
-  //
-  //   // finds the matching game ID
-  //
-  //   if (store.games[i].id.toString() === store.gameId.toString()) {
-  //     gameLogic.board = store.games[i].cells;
-  //     let num = 0;
-  //     for (let j = 0; j < 9; j++) {
-  //       if (gameLogic.board[j] !== '') {
-  //         num++;
-  //       }
-  //       //this should set the board state to the loaded game's
-  //       console.log(gameLogic.board);
-  //       gameLogic.turnCounter = num;
-  //       console.log(gameLogic.turnCounter);
-  //       gameLogic.createBoard();
-  //     }
-  //   }
-  // }
+  for (let i = 0, max = store.games.length; i < max; i++) {
+
+    // finds the matching game ID
+
+    if (store.games[i].id.toString() === store.gameId.toString()) {
+      gameVar.board = store.games[i].cells;
+      let num = 0;
+      for (let j = 0; j < 9; j++) {
+        if (gameVar.board[j] !== '') {
+          num++;
+        }
+        //this should set the board state to the loaded game's
+        console.log(gameVar.board);
+        gameVar.turnCounter = num;
+        console.log(gameVar.turnCounter);
+        gameLogic.createBoard();
+      }
+    }
+  }
 };
 
 const run = function (event) {
