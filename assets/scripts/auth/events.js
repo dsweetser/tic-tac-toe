@@ -13,24 +13,20 @@ const store = require('../store');
 
 const onSignUp = function (event) {
   event.preventDefault();
-  $('.login').hide();
-  $('.userstuff').show();
+
   if ($('.col-xs-10')) {
     $('.col-xs-10').remove();
   }
 
   let data = getFormFields(event.target);
   api.signUp(data);
-
-  // .then(ui.success)
-  // .catch(ui.failure);
+  $('.login').hide();
+  $('.userstuff').show();
 
 };
 
 const onSignIn = function (event) {
   event.preventDefault();
-  $('.login').hide();
-  $('.userstuff').show();
   if ($('.col-xs-10')) {
     $('.col-xs-10').remove();
   }
@@ -42,10 +38,8 @@ const onSignIn = function (event) {
       console.log(store);
       return store.user;
     });
-
-  // .then(ui.success)
-  // .catch(ui.failure);
-
+    $('.login').hide();
+    $('.userstuff').show();
 };
 
 const onChangePassword = function (event) {
