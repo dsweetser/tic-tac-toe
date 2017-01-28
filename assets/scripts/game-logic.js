@@ -31,9 +31,9 @@ const createBoard = function () {
   for (let i = 0; i < 9; i++) {
     $('#board').append('<div class="col-xs-4" id="' + i + '"></div>');
     if (gameVar.board[i] === 'x') {
-      $('#' + i).text('X');
+      $('#' + i).addClass('xplaid').text('X');
     } else if (gameVar.board[i] === 'o') {
-      $('#' + i).text('O');
+      $('#' + i).addClass('oplaid').text('O');
     }
   }
 };
@@ -51,7 +51,7 @@ const triggerEndGame = function () {
       ((board[0] === 'x') && (board[4] === 'x') && (board[8] === 'x')) ||
       ((board[2] === 'x') && (board[4] === 'x') && (board[6] === 'x'))) {
     $('#board').html('<div class="container board" id="board"></div>');
-    $('#board').append('<div class="col-xs-12"><p>X WINS</p></div>');
+    $('#board').append('<div class="col-xs-12  xplaid"><p>X WINS</p></div>');
     gg();
   } else if
       (((board[0] === 'o') && (board[1] === 'o') && (board[2] === 'o')) ||
@@ -62,8 +62,8 @@ const triggerEndGame = function () {
       ((board[2] === 'o') && (board[5] === 'o') && (board[8] === 'o')) ||
       ((board[0] === 'o') && (board[4] === 'o') && (board[8] === 'o')) ||
       ((board[2] === 'o') && (board[4] === 'o') && (board[6] === 'o'))) {
-    $('#board').html('<div class="container board" id="board"></div>');
-    $('#board').append('<div class="col-xs-12"><p>O WINS</p></div>');
+    $('#board').html('<div class="container board oplaid" id="board"></div>');
+    $('#board').append('<div class="col-xs-12 oplaid"><p>O WINS</p></div>');
     gg();
   } else if (turnCounter > 8) {
     $('#board').html('<div class="container board" id="board"></div>');
