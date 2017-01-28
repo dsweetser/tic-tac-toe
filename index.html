@@ -12,12 +12,30 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
+      <div class="row">
+
+        <form id="sign-in">
+          <fieldset>
+            <legend>Sign in</legend>
+            <label>
+              Email
+              <input type="text" name="credentials[email]">
+            </label>
+            <label>
+              Password
+              <input type="password" name="credentials[password]">
+            </label>
+            <input type="submit" name="submit" value="Sign in!">
+          </fieldset>
+        </form>
+
+        <div class="col-xs-6">
+        <form id="reset">
+          <input type="submit" name="submit" value="New Game"></form></div></div>
 
 
       <div class="container board" id="board"></div>
-      <div class="row"><div class="col-xs-1">
-        <form id="reset">
-          <input type="submit" name="submit" value="New Game"></form></div></div>
+
         <div class="row"><div class="col-xs-9"><form id="SwitchGame">
           <label>
             Game ID
@@ -45,21 +63,6 @@
                   <input type="password" name="credentials[password_confirmation]">
                 </label>
                 <input type="submit" name="submit" value="Sign up!">
-              </fieldset>
-            </form>
-
-            <form id="sign-in">
-              <fieldset>
-                <legend>Sign in</legend>
-                <label>
-                  Email
-                  <input type="text" name="credentials[email]">
-                </label>
-                <label>
-                  Password
-                  <input type="password" name="credentials[password]">
-                </label>
-                <input type="submit" name="submit" value="Sign in!">
               </fieldset>
             </form>
 
