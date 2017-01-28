@@ -12,22 +12,10 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
+      <div class="container">
+        <h1> Welcome to Tic-Tac-Plaid, the unlikely marriage of a classic game and a beloved pattern.</h1>
       <div class="row">
 
-        <form id="sign-in">
-          <fieldset>
-            <legend>Sign in</legend>
-            <label>
-              Email
-              <input type="text" name="credentials[email]">
-            </label>
-            <label>
-              Password
-              <input type="password" name="credentials[password]">
-            </label>
-            <input type="submit" name="submit" value="Sign in!">
-          </fieldset>
-        </form>
 
         <div class="col-xs-6">
         <form id="reset">
@@ -36,18 +24,24 @@
 
       <div class="container board" id="board"></div>
 
-        <div class="row"><div class="col-xs-9"><form id="SwitchGame">
-          <label>
-            Game ID
-            <input type="text" name="GameId">
-          </label>
-          <input type="submit"name="submit" value="Resume Game">
-        </form>
-      </div></div>
-        <div class="row"><div class="col-xs-1">
-          <form id="getGames">
-              <input type="submit" name="submit" value="Get Games"></form></div></div>
-      <div class="container"><form id="sign-up">
+
+
+      <form class="login" id="sign-in">
+            <fieldset>
+              <legend>Sign in</legend>
+              <label>
+                Email
+                <input type="text" name="credentials[email]">
+              </label>
+              <label>
+                Password
+                <input type="password" name="credentials[password]">
+              </label>
+              <input type="submit" name="submit" value="Sign in!">
+            </fieldset>
+          </form>
+
+      <form class="login" id="sign-up">
               <fieldset>
                 <legend>Sign up!</legend>
                 <label>
@@ -66,7 +60,23 @@
               </fieldset>
             </form>
 
-            <form id="change-password">
+
+          <div class="row">
+            <div class="col-xs-9 userstuff"><form id="SwitchGame">
+              <fieldset>
+            <label>
+              Game ID
+              <input type="text" name="GameId">
+            </label>
+            <input type="submit"name="submit" value="Resume Game">
+          </fieldset>
+        </form>
+        </div></div>
+          <div class="row"><div class="col-xs-1">
+            <form class="userstuff" id="getGames">
+                <input type="submit" name="submit" value="Get Games"></form></div></div>
+
+            <form class="userstuff" id="change-password">
               <fieldset>
                 <legend>Change Password</legend>
                 <label>
@@ -82,7 +92,7 @@
               </fieldset>
             </form>
 
-            <form id="sign-out">
+            <form class="userstuff" id="sign-out">
               <fieldset>
                 <legend>Sign Out</legend>
                 <input type="submit" name="submit" value="Sign Out!">

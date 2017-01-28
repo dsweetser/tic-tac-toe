@@ -13,6 +13,8 @@ const store = require('../store');
 
 const onSignUp = function (event) {
   event.preventDefault();
+  $('.login').hide();
+  $('.userstuff').show();
   if ($('.col-xs-10')) {
     $('.col-xs-10').remove();
   }
@@ -27,6 +29,8 @@ const onSignUp = function (event) {
 
 const onSignIn = function (event) {
   event.preventDefault();
+  $('.login').hide();
+  $('.userstuff').show();
   if ($('.col-xs-10')) {
     $('.col-xs-10').remove();
   }
@@ -61,6 +65,8 @@ const onChangePassword = function (event) {
 
 const onSignOut = function (event) {
   event.preventDefault();
+  $('.login').show();
+  $('.userstuff').hide();
   if ($('.col-xs-10')) {
     $('.col-xs-10').remove();
   }
@@ -70,9 +76,6 @@ const onSignOut = function (event) {
       delete store.user;
       return store;
     });
-
-  // .then(ui.success)
-  // .catch(ui.failure);
 
 };
 
