@@ -41,7 +41,6 @@ const createBoard = function () {
 const triggerEndGame = function () {
   let board = gameVar.board;
   let turnCounter = gameVar.turnCounter;
-  console.log(board);
   if (((board[0] === 'x') && (board[1] === 'x') && (board[2] === 'x')) ||
       ((board[3] === 'x') && (board[4] === 'x') && (board[5] === 'x')) ||
       ((board[6] === 'x') && (board[7] === 'x') && (board[8] === 'x')) ||
@@ -101,7 +100,6 @@ const activePlayer = function () {
 
 const testLogic = function (square) {
   if (!gameVar.board) {
-    console.log('should not be happening');
     gameVar.board = ['', '', '', '', '', '', '', '', ''];
   }
 

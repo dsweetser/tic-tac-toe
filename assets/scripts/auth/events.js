@@ -35,7 +35,6 @@ const onSignIn = function (event) {
   api.signIn(data)
     .then((response) => {
       store.user = response.user;
-      console.log(store);
       return store.user;
     });
     $('.login').hide();
@@ -49,7 +48,6 @@ const onChangePassword = function (event) {
   }
 
   let data = getFormFields(event.target);
-  console.log(data);
   api.changePassword(data);
 
   // .then(ui.success)
