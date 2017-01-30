@@ -139,9 +139,16 @@ const changeGame = function () {
     $('.col-xs-10').remove();
   }
 
+// if the user is logged in
+
   if (store.user) {
+
+// gets the game that was entered in and stores it as store.gameId
+
     let data = getFormFields(event.target);
     store.gameId = data.GameId;
+
+// saves the data the API sends back as store.games
 
     api.getGame(store.gameId)
     .then((response) =>
