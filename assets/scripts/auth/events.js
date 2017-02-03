@@ -13,13 +13,16 @@ const store = require('../store');
 
 const onSignUp = function (event) {
   event.preventDefault();
-
   if ($('.col-xs-10')) {
     $('.col-xs-10').remove();
   }
 
   let data = getFormFields(event.target);
-  api.signUp(data);
+  api.signUp(data)
+    .catch(
+      $('#sign-up').append(
+      '<div class="row"><div class="col-xs-10 red" id="temp">Username already taken</div></div>')
+    );
 
   // $('.login').hide();
   // $('.userstuff').show();
@@ -54,7 +57,11 @@ const onChangePassword = function (event) {
   }
 
   let data = getFormFields(event.target);
-  api.changePassword(data);
+  api.changePassword(data)
+  .catch(
+    $('#sign-up').append(
+    '<div class="row"><div class="col-xs-10 red" id="temp">Username already taken</div></div>')
+  );
 
   // .then(ui.success)
   // .catch(ui.failure);
