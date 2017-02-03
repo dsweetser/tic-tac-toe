@@ -20,8 +20,9 @@ const onSignUp = function (event) {
 
   let data = getFormFields(event.target);
   api.signUp(data);
-  $('.login').hide();
-  $('.userstuff').show();
+
+  // $('.login').hide();
+  // $('.userstuff').show();
 
 };
 
@@ -37,8 +38,13 @@ const onSignIn = function (event) {
       store.user = response.user;
       return store.user;
     });
+    if (store.user) {
     $('.login').hide();
     $('.userstuff').show();
+  } else {
+    $('#sign-in').append(
+      '<div class="row"><div class="col-xs-10 red" id="temp">Invalid Username or Password</div></div>');
+  }
 };
 
 const onChangePassword = function (event) {
@@ -155,11 +161,14 @@ const changeGame = function () {
     store.games = response.games);
     for (let i = 0, max = store.games.length; i < max; i++) {
 
-      // finds the matching game ID
+      // goes through list of games to find the matching game ID
 
       if (store.games[i].id.toString() === store.gameId.toString()) {
         gameVar.board = store.games[i].cells;
         let num = 0;
+
+        // calculates turn counter
+
         for (let j = 0; j < 9; j++) {
           if (gameVar.board[j] !== '') {
             num++;
