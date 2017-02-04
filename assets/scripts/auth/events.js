@@ -37,15 +37,10 @@ const onSignIn = function (event) {
   api.signIn(data)
     .then((response) => {
       store.user = response.user;
-      return store.user;
-    });
-    if (store.user) {
     $('.login').hide();
     $('.userstuff').show();
-  } else {
-    $('#sign-in').append(
-      '<div class="row"><div class="col-xs-10 red" id="temp">Invalid Username or Password</div></div>');
-  }
+ })
+    .catch(ui.signInNo);
 };
 
 const onChangePassword = function (event) {

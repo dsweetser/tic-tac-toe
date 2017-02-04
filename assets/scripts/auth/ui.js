@@ -34,6 +34,11 @@ const changePasswordNo = () =>{
   '<div class="row"><div class="col-xs-10 red" id="temp">Bad Password, Please Retry</div></div>');
 };
 
+const signInNo = () =>{
+  $('#sign-in').append(
+    '<div class="row"><div class="col-xs-10 red" id="temp">Invalid Username or Password</div></div>');
+};
+
 module.exports = {
   failure,
   success,
@@ -41,4 +46,5 @@ module.exports = {
   signUpNo,
   changePasswordYes,
   changePasswordNo,
+  signInNo,
 };
