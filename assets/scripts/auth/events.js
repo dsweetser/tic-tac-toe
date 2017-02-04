@@ -62,6 +62,7 @@ const onChangePassword = function (event) {
 
 const onSignOut = function (event) {
   event.preventDefault();
+  $('#board').html('<div class="container board" id="board"></div>');
   $('.login').show();
   $('.userstuff').hide();
   if ($('.col-xs-10')) {
