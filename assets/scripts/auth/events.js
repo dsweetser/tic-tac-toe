@@ -37,6 +37,7 @@ const onSignIn = function (event) {
   api.signIn(data)
     .then((response) => {
       store.user = response.user;
+    $('#sign-in')[0].reset();
     $('.login').hide();
     $('.userstuff').show();
  })
