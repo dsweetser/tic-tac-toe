@@ -187,6 +187,7 @@ const changeGame = function () {
     $('#SwitchGame').parent().parent().append(
       '<div class="col-xs-10 warning">You must be logged in to do this!</div>');
   }
+  $('#SwitchGame')[0].reset();
 };
 
 const run = function (event) {
