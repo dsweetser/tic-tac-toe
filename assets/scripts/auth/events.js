@@ -16,6 +16,7 @@ const onSignUp = function (event) {
   if ($('.col-xs-10')) {
     $('.col-xs-10').remove();
   }
+  $('#sign-up')[0].reset();
 
   let data = getFormFields(event.target);
   api.signUp(data)
