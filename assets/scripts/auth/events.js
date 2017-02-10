@@ -43,6 +43,7 @@ const onSignIn = function (event) {
     $('.userstuff').show();
  })
     .catch(ui.signInNo);
+    $('#sign-in')[0].reset();
 };
 
 const onChangePassword = function (event) {
