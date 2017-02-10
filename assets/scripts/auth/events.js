@@ -52,6 +52,7 @@ const onChangePassword = function (event) {
   }
 
   let data = getFormFields(event.target);
+  $('#change-password')[0].reset();
   api.changePassword(data)
   .then(ui.changePasswordYes)
   .catch(ui.changePasswordNo);
