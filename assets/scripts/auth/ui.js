@@ -19,7 +19,7 @@ const signUpNo = () => {
     $('.col-xs-10').remove();
   }
   $('#sign-up').append(
-  '<div class="row"><div class="col-xs-10 red" id="temp">Username already taken</div></div>');
+  '<div class="row"><div class="col-xs-10 red" id="temp"><h3>Username already taken OR mismatched password</h3></div></div>');
 };
 
 const changePasswordYes = () =>{
@@ -33,12 +33,12 @@ const changePasswordNo = () =>{
     $('.col-xs-10').remove();
   }
   $('#change-password').append(
-  '<div class="row"><div class="col-xs-10 red" id="temp">Bad Password, Please Retry</div></div>');
+  '<div class="row"><div class="col-xs-10 red" id="temp"><h3>Bad Password, Please Retry</h3></div></div>');
 };
 
 const signInNo = () =>{
   $('#sign-in').append(
-    '<div class="row"><div class="col-xs-10 red" id="temp">Invalid Username or Password</div></div>');
+    '<div class="row"><div class="col-xs-10 red" id="temp"><h3>Invalid Username or Password</h3></div></div>');
 };
 
 module.exports = {
