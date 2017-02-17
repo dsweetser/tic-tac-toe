@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic-Tac-Plaid</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags unless you know what you are doing -->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags unless you know what you are doing -->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body class="container-fluid">
+      <div class="container">
+        <h1> Welcome to Tic-Tac-Plaid, the unlikely but suitable marriage of the grid-based game and grid-based pattern.</h1>
+        <h3>To play, just hit New Game, or sign up/log in to access advanced functionality.</h3>
+      <div class="row">
+
+
+        <div class="col-xs-6">
+        <form id="reset">
+          <input type="submit" name="submit" value="New Game"></form></div></div>
+
+
+      <div class="container board" id="board"></div>
+
+
+
+      <form class="login" id="sign-in">
+            <fieldset>
+              <legend>Sign in</legend>
+              <label>
+                Email
+                <input type="text" name="credentials[email]">
+              </label>
+              <label>
+                Password
+                <input type="password" name="credentials[password]">
+              </label>
+              <input type="submit" name="submit" value="Sign in!">
+            </fieldset>
+          </form>
+
+      <form class="login" id="sign-up">
+              <fieldset>
+                <legend>Sign up!</legend>
+                <label>
+                  Email
+                  <input type="text" name="credentials[email]">
+                </label>
+                <label>
+                  Password
+                  <input type="password" name="credentials[password]">
+                </label>
+                <label>
+                  Password Confirmation
+                  <input type="password" name="credentials[password_confirmation]">
+                </label>
+                <input type="submit" name="submit" value="Sign up!">
+              </fieldset>
+            </form>
+
+
+          <div class="row">
+            <div class="col-xs-9 userstuff"><form id="SwitchGame">
+              <fieldset>
+            <label>
+              Game ID
+              <input type="text" name="GameId">
+            </label>
+            <input type="submit"name="submit" value="Resume Game">
+            <p>To get the ID numbers of unfinished games, click "Get Games" and enter the game number here.</p>
+          </fieldset>
+        </form>
+        </div></div>
+          <div class="row"><div class="col-xs-1">
+            <form class="userstuff" id="getGames">
+                <input type="submit" name="submit" value="Get Games"></form></div></div>
+
+            <form class="userstuff" id="change-password">
+              <fieldset>
+                <legend>Change Password</legend>
+                <label>
+                  Current Password
+                  <input type="password" name="passwords[old]">
+                </label>
+                <label>
+                  New Password
+                  <input type="password" name="passwords[new]">
+                </label>
+
+                <input type="submit" name="submit" value="Change Password!">
+              </fieldset>
+            </form>
+
+            <form class="userstuff" id="sign-out">
+              <fieldset>
+                <legend>Sign Out</legend>
+                <input type="submit" name="submit" value="Sign Out!">
+              </fieldset>
+            </form></div>
+    </body>
+</html>
